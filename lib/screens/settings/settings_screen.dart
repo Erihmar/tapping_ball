@@ -5,6 +5,7 @@ import 'package:tapping_ball/constants/color_const.dart';
 import 'package:tapping_ball/constants/dimen_const.dart';
 import 'package:tapping_ball/custom_widgets/custom_card.dart';
 import 'package:tapping_ball/custom_widgets/custom_text.dart';
+import 'package:tapping_ball/screens/settings/change_language_screen.dart';
 import 'package:tapping_ball/screens/settings/privacy_policy_screen.dart';
 
 import '../../controller/settings_controller.dart';
@@ -41,9 +42,10 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: CustomText(
-          text: "Settings",
-          fontSize: 30.sp,
+          text: "settings".tr,
+          fontSize: 20.sp,
           color: Colors.brown,
+          fontWeight: FontWeight.bold,
         ),
       ),
       body: Container(
@@ -59,82 +61,106 @@ class SettingsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 100.h,),
-             CustomText(text: "Sound Settings",fontSize: 16.sp,color: Colors.brown,),
-            CustomCard(
-                widget: Container(
-              padding: EdgeInsets.all(10.w),
-              width: MediaQuery.of(context).size.width,
-              height: 60.h,
-              decoration: BoxDecoration(
-                  //color: color ?? cardColor,
-                  image: DecorationImage(
-                image: AssetImage("assets/images/wood_bggg.webp"),
-                fit: BoxFit.cover,
-              )),
-              child: Row(
-                children: [
-                  CustomText(
-                    text: "Sound",
-                    fontSize: 20.sp,
-                  ),
-                  const Spacer(),
-                  Obx(() => GestureDetector(
-                    onTap: () {
-                      settingsController.toggleMusic();
-                    },
-                    child: Icon(
-                      (settingsController.isMusicOn.value)? Icons.volume_up:Icons.volume_off,
+            CustomText(text: "language_settings".tr,fontSize: 16.sp,color: Colors.brown,fontWeight: FontWeight.bold,),
+            GestureDetector(
+              onTap: () {
+                Get.to(const ChangeLanguageScreen());
+              },
+              child: CustomCard(
+                  widget: Container(
+                    padding: EdgeInsets.all(10.w),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60.h,
+                    decoration:const BoxDecoration(
+                      //color: color ?? cardColor,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/wood_bggg.webp"),
+                          fit: BoxFit.cover,
+                        )),
+                    child: Row(
+                      children: [
+                        CustomText(
+                          text: "change_language".tr,
+                          fontSize: 20.sp,
+                        ),
+                        const Spacer(),
+                        Icon(
+                         Icons.language,
                           color: Colors.white,
                           size: 30.w,
-                        ),
+                        )
+                      ],
+                    ),
                   )),
-                  // Image.asset(
-                  //   "assets/images/sound_btn.webp",
-                  //   width: 25.w,
-                  //   height: 25.h,
-                  // ),
-                ],
-              ),
-            )),
+            ),
             kSizedBoxH10,
-             CustomText(text: "Other ",fontSize: 16.sp,color: Colors.brown,),
-
-            CustomCard(
-                widget: Container(
+             CustomText(text: "sound_settings".tr,fontSize: 16.sp,color: Colors.brown,fontWeight: FontWeight.bold),
+            Obx(()=>
+              GestureDetector(
+                onTap: () {
+                  settingsController.toggleMusic();
+                },
+                child: CustomCard(
+                    widget: Container(
                   padding: EdgeInsets.all(10.w),
                   width: MediaQuery.of(context).size.width,
                   height: 60.h,
-                  decoration: BoxDecoration(
-                    //color: color ?? cardColor,
+                  decoration:const BoxDecoration(
+                      //color: color ?? cardColor,
                       image: DecorationImage(
-                        image: AssetImage("assets/images/wood_bggg.webp"),
-                        fit: BoxFit.cover,
-                      )),
+                    image: AssetImage("assets/images/wood_bggg.webp"),
+                    fit: BoxFit.cover,
+                  )),
                   child: Row(
                     children: [
                       CustomText(
-                        text: "Privacy Policy",
+                        text: "sound".tr,
                         fontSize: 20.sp,
                       ),
                       const Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(const PrivacyPolicyScreen());
-                        },
-                        child: Icon(
+                       Icon(
+                         (settingsController.isMusicOn.value)? Icons.volume_up:Icons.volume_off,
+                             color: Colors.white,
+                             size: 30.w,
+                           )
+                    ],
+                  ),
+                )),
+              ),
+            ),
+            kSizedBoxH10,
+             CustomText(text: "general".tr,fontSize: 16.sp,color: Colors.brown,fontWeight: FontWeight.bold,),
+
+            GestureDetector(
+              onTap: () {
+                Get.to(const PrivacyPolicyScreen());
+              },
+              child: CustomCard(
+                  widget: Container(
+                    padding: EdgeInsets.all(10.w),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60.h,
+                    decoration:const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/wood_bggg.webp"),
+                          fit: BoxFit.cover,
+                        )),
+                    child: Row(
+                      children: [
+                        CustomText(
+                          text: "policy".tr,
+                          fontSize: 20.sp,
+                        ),
+                        const Spacer(),
+                        Icon(
                           Icons.info,
                           color: Colors.white,
                           size: 30.w,
                         ),
-                      ),
-                      // Image.asset(
-                      //   "assets/images/sound_btn.webp",
-                      //   width: 25.w,
-                      //   height: 25.h,
-                      // ),
-                    ],
-                  ),
-                ))
+                      ],
+                    ),
+                  )),
+            )
           ],
         ),
       ),

@@ -34,7 +34,7 @@ class ScoreScreen extends StatelessWidget {
         leadingWidth: 60.w,
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: CustomText(text: "Score",fontSize: 30.sp,color: Colors.brown,),
+        title: CustomText(text: "score".tr,fontSize: 25.sp,color: Colors.brown,fontWeight: FontWeight.bold,),
       ),
       body: Container(
         width: double.infinity,
@@ -62,7 +62,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText(text: "Best Score",fontSize: 35.sp,),
+                    CustomText(text: "best_score".tr,fontSize: 35.sp,),
 
                     kSizedBoxH20,CustomText(text: "${gameController.bestScore.toString()} ",fontSize: 40.sp,),
 

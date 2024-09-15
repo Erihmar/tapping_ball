@@ -36,7 +36,7 @@ class GamePlayScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomText(
-                    text: "Game Over",
+                    text: "game_over".tr,
                     fontSize: 40.sp,
                     color: Colors.brown,
                   ),
@@ -53,7 +53,7 @@ class GamePlayScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: "Your Score",
+                          text: "score".tr,
                           fontSize: 25.sp,
                         ),
                         CustomText(
@@ -68,7 +68,7 @@ class GamePlayScreen extends StatelessWidget {
                       onTap: () {
                         gameController.startGame();
                       },
-                      text: "Restart Game"),
+                      text: "restart".tr),
                   kSizedBoxH20,
 
                      CustomImageButton(
@@ -76,7 +76,7 @@ class GamePlayScreen extends StatelessWidget {
                           gameController.stopSound();
                           Get.offAll(const MenuScreen());
                         },
-                        text: "Menu"),
+                        text: "menu".tr),
 
                 ],
               ),
@@ -101,13 +101,18 @@ class GamePlayScreen extends StatelessWidget {
                           Positioned(
                             top: 40.h,
                             left: 100.w,
-                            child: Obx(
-                                  () => CustomText(
-                                text: gameController.isGameOver.value
-                                    ? ""
-                                    : 'Score: ${gameController.score}',
-                                fontSize: 30.sp,
-                              ),
+                            child: Row(
+                              children: [
+                                CustomText(text: "score".tr, fontSize: 30.sp),
+                                Obx(
+                                      () => CustomText(
+                                    text: gameController.isGameOver.value
+                                        ? ""
+                                        : (gameController.score.toString()),
+                                    fontSize: 30.sp,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Positioned(
@@ -141,13 +146,13 @@ class GamePlayScreen extends StatelessWidget {
                                   color: Colors.white,
                                   text: gameController.showText.value
                                       ? (gameController.changeBackgroundEasy.value
-                                      ? "Easy Level"
+                                      ? "easy".tr
                                       : gameController
                                       .changeBackgroundMedium.value
-                                      ? "Medium Level"
+                                      ? "medium".tr
                                       :gameController
                                       .changeBackgroundHard.value
-                                      ? "Hard Level": "Hardest Level")
+                                      ? "hard".tr: "hardest".tr)
                                       : "",
                                   fontSize:gameController
                                       .changeBackgroundHardest.value
@@ -206,7 +211,7 @@ class GamePlayScreen extends StatelessWidget {
                             () => CustomText(
                               text: gameController.isGameOver.value
                                   ? ""
-                                  : 'Score: ${gameController.score}',
+                                  : '${'score'.tr}: ${gameController.score}',
                               fontSize: 30.sp,
                             ),
                           ),
@@ -241,11 +246,13 @@ class GamePlayScreen extends StatelessWidget {
                                 color: Colors.white,
                                 text: gameController.showText.value
                                     ? (gameController.changeBackgroundEasy.value
-                                        ? "Easy Level"
-                                        : gameController
-                                                .changeBackgroundMedium.value
-                                            ? "Medium Level"
-                                            : "Hard Level")
+                                    ? "easy".tr
+                                    : gameController
+                                    .changeBackgroundMedium.value
+                                    ? "medium".tr
+                                    :gameController
+                                    .changeBackgroundHard.value
+                                    ? "hard".tr: "hardest".tr)
                                     : "",
                                 fontSize: 45.sp,
                               ),

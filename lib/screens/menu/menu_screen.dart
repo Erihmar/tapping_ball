@@ -9,6 +9,7 @@ import 'package:tapping_ball/constants/dimen_const.dart';
 import 'package:tapping_ball/custom_widgets/custom_image_button.dart';
 import 'package:tapping_ball/custom_widgets/custom_text.dart';
 import 'package:tapping_ball/custom_widgets/custom_text_button.dart';
+import 'package:tapping_ball/languages/enum.dart';
 import 'package:tapping_ball/screens/game/game_intro_screen.dart';
 import 'package:tapping_ball/screens/score/score_screen.dart';
 import 'package:tapping_ball/screens/settings/settings_screen.dart';
@@ -44,7 +45,7 @@ class _MenuScreenState extends State<MenuScreen> {
               builder: (context, StateSetter setState) {
                 return AlertDialog(
                   title: CustomText(
-                    text: 'Privacy Policy',
+                    text: 'policy'.tr,
                     fontWeight: FontWeight.w500,
                     color: secondaryColor,
                   ),
@@ -56,7 +57,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         child: Column(
                           children: [
                             Text(
-                                Global.policyEn
+                               Global.language==Language.zh.name? Global.policyCn: Global.policy
                                 ,
                                 style: TextStyle(
                                     fontSize: 12,
@@ -90,7 +91,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                   },
                                 ),
                                 CustomText(
-                                  text: "I agreed to the privacy policy.",
+                                  text: "agree".tr,
                                   fontSize: 12,
                                   color: secondaryColor,
                                 )
@@ -111,7 +112,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               }
                                   : null,
                               child: CustomText(
-                                text: 'Accept',
+                                text: 'accept'.tr,
                                 fontSize: 14,
                                 color: Colors.white,
                               ),
@@ -150,16 +151,16 @@ class _MenuScreenState extends State<MenuScreen> {
             kSizedBoxH30,
             kSizedBoxH30,
             kSizedBoxH30,
-            CustomImageButton(onTap: () {Get.to(const GameIntroScreen());}, text: "Play"),
+            CustomImageButton(onTap: () {Get.to(const GameIntroScreen());}, text: "play_now".tr),
             kSizedBoxH10,
-            CustomImageButton(onTap: () {Get.to(const SettingsScreen());}, text: "Settings"),
+            CustomImageButton(onTap: () {Get.to(const SettingsScreen());}, text: "settings".tr),
             kSizedBoxH10,
-            CustomImageButton(onTap: () {Get.to(const ScoreScreen());}, text: "Score"),
+            CustomImageButton(onTap: () {Get.to(const ScoreScreen());}, text: "score".tr),
             kSizedBoxH30,
             kSizedBoxH30,
-            CustomText(text: "Version 1.0.0", fontSize: 18.sp),
+            CustomText(text: "${'version'.tr} 1.0.0", fontSize: 18.sp),
             kSizedBoxH30,
-            CustomImageButton(onTap: () {exit(0);}, text: "Exit"),
+            CustomImageButton(onTap: () {exit(0);}, text: "exit".tr),
             Spacer(),
           ],
         ),

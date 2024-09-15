@@ -83,7 +83,7 @@ class _GameIntroScreenState extends State<GameIntroScreen> with SingleTickerProv
                     child: FadeTransition(
                       opacity: _fadeAnimation,
                       child: CustomText(
-                        text: "Tap To Play",
+                        text: "tap_to_play".tr,
                         fontSize: 40.sp,
                         color: Colors.brown,
                       ),
